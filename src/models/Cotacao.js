@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import Fonte from './Fonte';
 
 export default class Cotacao extends Model {
 
@@ -11,7 +12,9 @@ export default class Cotacao extends Model {
             link: Sequelize.STRING(1000),
             fonte: {
                 type: Sequelize.STRING(100),
-                primaryKey: true
+                primaryKey: true,
+                references: 'fontes_de_cotacoes',
+                referencesKey: 'nomefonte' 
             }
             
         }, 

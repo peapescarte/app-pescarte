@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import Cotacao from "./Cotacao";
 import Pescado from "./Pescado";
 
 export default class CotPescado extends Model {
@@ -13,7 +14,9 @@ export default class CotPescado extends Model {
             },
             data: {
                 type: Sequelize.DATE,
-                primaryKey: true
+                primaryKey: true,
+                references: 'cotacoes',
+                referencesKey: 'data'
             },
             fonte: {
                 type: Sequelize.STRING(100),
@@ -32,7 +35,6 @@ export default class CotPescado extends Model {
             underscored: true
         });
         CotPescado.removeAttribute('id');
-        CotPescado.hasOne(Pescado);
 
         return this;
     }
