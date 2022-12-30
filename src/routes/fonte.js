@@ -1,8 +1,8 @@
 import { Router } from "express";
-import home from '../controllers/HomeController'
+import fonte from "../controllers/FonteController";
 
 const router = new Router();
 
-router.get('/', home.index)
+router.get('/', fonte.index)
 
 export default router;

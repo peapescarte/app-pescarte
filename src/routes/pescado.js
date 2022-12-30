@@ -1,8 +1,8 @@
 import { Router } from "express";
-import home from '../controllers/HomeController'
+import pescado from '../controllers/PescadoController'
 
 const router = new Router();
 
-router.get('/', home.index)
+router.get('/', pescado.index)
 
 export default router;

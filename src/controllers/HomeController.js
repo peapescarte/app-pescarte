@@ -1,4 +1,4 @@
-class Home{
+class HomeController{
 
     index(req, res){
         res.status(200).json({
@@ -8,4 +8,4 @@ class Home{
 
 }
 
-export default new Home();
+export default new HomeController(); 
