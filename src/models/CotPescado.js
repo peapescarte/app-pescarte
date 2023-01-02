@@ -23,7 +23,8 @@ export default class CotPescado extends Model {
                 primaryKey: true
             },
             minimo: Sequelize.NUMBER,
-            maximo: Sequelize.NUMBER
+            maximo: Sequelize.NUMBER,
+            mais_comum: Sequelize.NUMBER
             
         }, 
         {
