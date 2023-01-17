@@ -52,6 +52,7 @@ $.ajax({
     header: {}
     }).done(function (res) {
         $('.date-refresh-bd').html(res.data);
+        console.log(res.data);
 });
 
 
