@@ -36,20 +36,22 @@ function unloadScrollBars(block, option) {
     document.body.scroll = option; // IE
 }
 
+// $.ajax({
+//     url:"http://localhost:8000/auth",
+//     dataType: "json",
+//     type: "GET",
+//     header: {}            
+//     }).done(function (res) {
+
+// });
+
 $.ajax({
-    url:"http://localhost:8000/auth",
+    url:"http://localhost:8000/cotPescados/date",
     dataType: "json",
     type: "GET",
-    header: {}            
+    header: {}
     }).done(function (res) {
-        $.ajax({
-            url:"http://localhost:8000/cotPescados/date",
-            dataType: "json",
-            type: "GET",
-            header: {'auhorization': res}
-            }).done(function (res) {
-                console.log(res)
-        });
+        $('.date-refresh-bd').html(res.data);
 });
 
 
