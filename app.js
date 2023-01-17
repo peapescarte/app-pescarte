@@ -24,7 +24,7 @@ class App{
         this.app.use(express.urlencoded({extended : true}));
         this.app.use(express.json());
         this.app.use(express.static('public'));
-        this.app.use(cors({origin: 'http://localhost:8000'}));
+        this.app.use(cors({origin: '*'}));
     }
 
     routes(){
