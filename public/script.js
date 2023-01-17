@@ -51,8 +51,9 @@ $.ajax({
     type: "GET",
     header: {}
     }).done(function (res) {
-        $('.date-refresh-bd').html(res.data);
-        console.log(res);
+        const [obj] = res;
+        $('.date-refresh-bd').html(obj.data);
+        
 });
 
 
