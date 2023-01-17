@@ -1,5 +1,7 @@
 import { Op } from "sequelize";
 import CotPescado from "../models/CotPescado";
+import Sequelize from "sequelize";
+const jwt = require('jsonwebtoken');
 
 class CotPescadoController{
 
@@ -52,6 +54,22 @@ class CotPescadoController{
         res.status(200).json(cotPesc);
 
     }
+
+    async date(req, res){{
+
+        // const token = req.headers.authorization;
+        // if (!token) return res.status(401).send('Access Denied');
+
+        const date = await CotPescado.findAll({
+            order: [['data', 'DESC']],
+            fields: ['data'],
+            limit: 1
+        })
+
+        res.status(200).json(date);
+
+    }}
+    
 
 }
 

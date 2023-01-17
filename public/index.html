@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/index-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>App Pescarte</title>
+</head>
+<body>
+    <header>
+        <div class="container-logo">
+            <img src="img/pescarte-logo.png" alt="Logo pescarte" title="Logo Pescarte">
+            <img src="img/fundo-Header3.png" alt="Fundo de um mar com peixes">
+        </div>
+    </header>
+    <main>
+        <div class="container-main">
+            <h1>Dados Abertos sobre Corações de Pescados</h1>
+            <div class="container-date-refresh">
+                <h3>Última atualização: <span class="date-refresh-bd">21/12/2022</span></h3>
+                <div class="refresh-bd">
+                    <img src="img/refresh-logo.png" alt="Logo de atualização" title="Atualizar base de dados">
+                </div>
+            </div>
+            <h2>Período</h2>
+            <div class="container-date">
+                <input type="date" name="data-inicio" id="data-inicio">
+                <input type="date" name="data-fim" id="data-fim">
+            </div>
+            <div class="container-filter">
+                <div class="box-filter container-fontes">
+                    <h2>Fontes:</h2>
+                    <div class="fontes">
+                        <div class="fonte">
+                            <input type="checkbox" name="ceasa" id="ceasa">
+                            <label for="ceasa">CEASA</label>
+                        </div>
+                        <div class="fonte">
+                            <input type="checkbox" name="SUPERMERCADO-A" id="ceasa">
+                            <label for="SUPERMERCADO-A">SUPERMERCADO A</label>
+                        </div>
+                        <div class="fonte">
+                            <input type="checkbox" name="SUPERMERCADO-B" id="supermercado-b">
+                            <label for="SUPERMERCADO-B">SUPERMERCADO B</label>
+                        </div>
+                        <div class="fonte">
+                            <input type="checkbox" name="OUTROS" id="outros">
+                            <label for="OUTROS">OUTROS</label>
+                        </div>
+                        <div class="fonte">
+                            <input type="checkbox" name="OUTROS" id="outros">
+                            <label for="OUTROS">OUTROS</label>
+                        </div>
+                        <div class="fonte">
+                            <input type="checkbox" name="OUTROS" id="outros">
+                            <label for="OUTROS">OUTROS</label>
+                        </div>
+                        <div class="fonte">
+                            <input type="checkbox" name="OUTROS" id="outros">
+                            <label for="OUTROS">OUTROS</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-filter search-pescados">
+                    <button>Escolher Pescados</button>
+                </div>
+            </div>
+            <div class="container-view-data">
+                <button class="view-data">Visualizar</button>
+                <button class="export-data">Exportar</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <svg width="2441" height="99" viewBox="0 0 2441 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0L101.708 12.3712C203.417 24.7425 406.833 49.4849 610.25 49.4849C813.667 49.4849 1017.08 24.7425 1220.5 16.495C1423.92 8.24749 1627.33 16.495 1830.75 16.495C2034.17 16.495 2237.58 8.24749 2339.29 4.12375L2441 0V98.9699H2339.29C2237.58 98.9699 2034.17 98.9699 1830.75 98.9699C1627.33 98.9699 1423.92 98.9699 1220.5 98.9699C1017.08 98.9699 813.667 98.9699 610.25 98.9699C406.833 98.9699 203.417 98.9699 101.708 98.9699H0V0Z" fill="#8ACFFF"/>
+        </svg>
+        <div class="container-footer">
+            <img src="img/pescarte-logo-footer.png" alt="Logo de Pescarte" title="Logo de Pescarte">
+            <img src="img/ipead.png" alt="Logo da Fundação Instituto de Pesquisas Econômicas, Administrativas e Contábeis" title="Logo da Fundação Instituto de Pesquisas Econômicas, Administrativas e Contábeis">
+            <img src="img/uenf.png" alt="Logo da Universidade Estadual do Norte Fluminense Darcy Ribeiro" title="Logo da Universidade Estadual do Norte Fluminense Darcy Ribeiro">
+            <img src="img/petrobras.png" alt="Logo da Petrobras" title="Logo da Petrobras">
+            <img src="img/ibama.png" alt="Logo do IBAMA" title="Logo do IBAMA">
+            <p>A realização do Projeto Pescarte é uma medida de mitigação exigida pelo licenciamento ambiental federal, conduzido pelo IBAMA.</p>
+        </div>
+    </footer>
+    <div class="modal-pescados">
+        <div class="container-pescados">
+            <div class="row-container-top">
+                <div class="col-container">
+                    <h2 class="select-pescados">Escolha o Pescado</h2>
+                    <form action="" class="search">
+                        <input type="search" id="text" list="historico">
+                        <img src="img/lupa.png" alt="">
+
+                        <datalist id="historico">
+                            <option value="Python">Python</option>
+                            <option value="HTMl">HTMl</option>
+                            <option value="CSS">CSS</option>
+                            <option value="JS">JS</option>
+                        </datalist>
+                    </form>
+                </div>
+                <div class="col-container">
+                    <h2>Filtrar por Preço</h2>
+                    <input type="range" min="0" max="1000" step="1" id="range-value">
+                    <p>Value: R$<output id="value-select"></output>,00</p>
+                </div>
+            </div>
+            <div class="row-container-bottom">
+                <ul>
+                    <li><input type="checkbox" name="Peixe 1" id="">Peixe 1</li>
+                    <li><input type="checkbox" name="Peixe 2" id="">Peixe 2</li>
+                    <li><input type="checkbox" name="Peixe 3" id="">Peixe 3</li>
+                    <li><input type="checkbox" name="Peixe 4" id="">Peixe 4</li>
+                    <li><input type="checkbox" name="Peixe 5" id="">Peixe 5</li>
+                    <li><input type="checkbox" name="Peixe 6" id="">Peixe 6</li>
+                    <li><input type="checkbox" name="Peixe 7" id="">Peixe 7</li>
+                    <li><input type="checkbox" name="Peixe 8" id="">Peixe 8</li>
+                    <li><input type="checkbox" name="Peixe 9" id="">Peixe 9</li>
+                    <li><input type="checkbox" name="Peixe 10" id="">Peixe 10</li>
+                    <li><input type="checkbox" name="Peixe 11" id="">Peixe 11</li>
+                    <li><input type="checkbox" name="Peixe 12" id="">Peixe 12</li>
+                    <li><input type="checkbox" name="Peixe 13" id="">Peixe 13</li>
+                </ul>
+                <ul>
+                    <li><input type="checkbox" name="Peixe 14" id="">Peixe 14</li>
+                    <li><input type="checkbox" name="Peixe 15" id="">Peixe 15</li>
+                    <li><input type="checkbox" name="Peixe 16" id="">Peixe 16</li>
+                    <li><input type="checkbox" name="Peixe 17" id="">Peixe 17</li>
+                    <li><input type="checkbox" name="Peixe 18" id="">Peixe 18</li>
+                    <li><input type="checkbox" name="Peixe 19" id="">Peixe 19</li>
+                    <li><input type="checkbox" name="Peixe 20" id="">Peixe 20</li>
+                    <li><input type="checkbox" name="Peixe 21" id="">Peixe 21</li>
+                    <li><input type="checkbox" name="Peixe 22" id="">Peixe 22</li>
+                    <li><input type="checkbox" name="Peixe 23" id="">Peixe 23</li>
+                    <li><input type="checkbox" name="Peixe 24" id="">Peixe 24</li>
+                    <li><input type="checkbox" name="Peixe 25" id="">Peixe 25</li>
+                    <li><input type="checkbox" name="Peixe 26" id="">Peixe 26</li>
+                </ul>
+            </div>
+            <div class="button-confirm"><button>Confirmar</button></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

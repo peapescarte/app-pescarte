@@ -1,9 +1,9 @@
+const {resolve} = require ('path')
+
 class HomeController{
 
     index(req, res){
-        res.status(200).json({
-            "msg" : "Bom dia 🙂"
-        });
+        res.sendFile(resolve(__dirname, '..', '..', 'public', 'index.html'));
     }
 
 }
