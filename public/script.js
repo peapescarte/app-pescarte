@@ -46,7 +46,7 @@ function unloadScrollBars(block, option) {
 // });
 
 $.ajax({
-    url:"http://localhost:8000/cotPescados/date",
+    url:"https://pescarte.onrender.com/cotPescados/date",
     dataType: "json",
     type: "GET",
     header: {}
