@@ -36,35 +36,11 @@ function unloadScrollBars(block, option) {
     document.body.scroll = option; // IE
 }
 
-// $.ajax({
-//     url:"http://localhost:8000/auth",
-//     dataType: "json",
-//     type: "GET",
-//     header: {}            
-//     }).done(function (res) {
-
-// });
-
 $.ajax({
     url:"https://pescarte.onrender.com/cotPescados/date",
     dataType: "json",
     type: "GET",
     header: {}
     }).done(function (res) {
-        const [obj] = res;
-        $('.date-refresh-bd').html(obj.data);
-        
+        $('.date-refresh-bd').html(res[0].data);
 });
-
-
-
-
-// $.ajax({
-//     url:"/cotPescados/busca",
-//     dataType: "json",
-//     type: "GET",
-//     header: {'Content-Type': 'application/json'}            
-//     }).done(function (res) {
-
-// });
-
