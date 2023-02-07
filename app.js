@@ -12,6 +12,7 @@ import pescado from './src/routes/pescado'
 import cotPesc from './src/routes/cotPescado'
 import fonte from './src/routes/fonte'
 import auth from './src/routes/auth'
+import authorization from './src/middlewares/authentication'
 
 class App{
     constructor(){
@@ -29,10 +30,10 @@ class App{
 
     routes(){
         this.app.use('/', home);
-        this.app.use('/cotacoes', cotacao);
-        this.app.use('/pescados', pescado)
-        this.app.use('/cotPescados', cotPesc);
-        this.app.use('/fontes', fonte);
+        this.app.use('/cotacoes', authorization, cotacao);
+        this.app.use('/pescados', authorization, pescado)
+        this.app.use('/cotPescados', authorization, cotPesc);
+        this.app.use('/fontes', authorization, fonte);
         this.app.use('/auth', auth);
 
     }

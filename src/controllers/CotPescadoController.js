@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import CotPescado from "../models/CotPescado";
 import Sequelize from "sequelize";
+import Pescado from "../models/Pescado";
 const jwt = require('jsonwebtoken');
 
 class CotPescadoController{
@@ -49,7 +50,13 @@ class CotPescadoController{
 
         }
 
-        const cotPesc = await CotPescado.findAll({ where });
+        const cotPesc = await CotPescado.findAll({
+            where: where,
+            include:{
+                model: Pescado
+            },
+        });
+
 
         res.status(200).json(cotPesc);
 
@@ -62,11 +69,11 @@ class CotPescadoController{
 
         const date = await CotPescado.findAll({
             order: [['data', 'DESC']],
-            fields: ['data'],
+            attributes: ['data'],
             limit: 1
         })
 
-        res.status(200).json(date);
+        res.status(200).json(date[0]);
 
     }}
     

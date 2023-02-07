@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import CotPescado from "./CotPescado";
 
 export default class Pescado extends Model {
 
