@@ -9,8 +9,11 @@ export default class CotPescado extends Model {
             cod_pescado: {
                 type: Sequelize.STRING(4),
                 primaryKey: true,
-                references: 'pescados',
-                referencesKey: 'cod_pescado'
+                references: {
+                    model: Pescado,
+                    key: 'cod_pescado'
+                }
+        
             },
             data: {
                 type: Sequelize.DATE,
@@ -36,6 +39,9 @@ export default class CotPescado extends Model {
             underscored: true
         });
         CotPescado.removeAttribute('id');
+        
+        Pescado.hasMany(CotPescado, {foreignKey: 'cod_pescado'});
+        CotPescado.belongsTo(Pescado, {foreignKey: 'cod_pescado'});
 
         return this;
     }

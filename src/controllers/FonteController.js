@@ -9,6 +9,14 @@ class FonteController{
         res.status(200).json(fontes);
     }
 
+    async busca(req, res){
+        const fontes = await Fonte.findAll({
+            attributes: ['nome']
+        })
+
+        res.status(200).json(fontes)
+    }
+
 }
 
 export default new FonteController(); 
