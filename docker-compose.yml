@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  database:
+      image: postgres
+      volumes:
+        - data:/data/db
+      env_file:
+        - .env
+      ports:
+        - 6000:5432
+      restart: on-failure
+      networks:
+        - databaseNetwork
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    restart: on-failure
+    networks:
+      - databaseNetwork
+
+networks:
+  databaseNetwork:
+    driver: bridge
+    name: databaseNetwork
+
+volumes:
+  data:
