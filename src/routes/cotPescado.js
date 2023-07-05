@@ -7,5 +7,6 @@ router.get('/', cotPescado.index);
 router.get('/busca', cotPescado.busca);
 router.get('/date', cotPescado.date);
 router.get('/precos', cotPescado.precos);
+router.get('/pescados', cotPescado.pescados);
 
 export default router;
