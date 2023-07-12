@@ -1,0 +1,122 @@
+header{
+    background-color: #fff;
+}
+header .container-header{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 24px 0;
+    align-items: center;
+    max-width: 1600px;
+}
+header .container-links ul{
+    display: flex;
+    gap: 64px;
+}
+header .container-links ul .link a{
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    display: flex;
+    gap: 10px;
+}
+header .btn-login{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-primary);
+    color: #fff;
+    font-family: "WorkSans-regular";
+    font-size: 1rem;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+header .logo-pescarte {
+    width: 156px;
+    height: 50px;
+}
+header .hamburguer-menu{
+    display: none;
+    cursor: pointer;
+}
+header .bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    transition: all .3s ease;
+    background-color: #000;
+}
+@media only screen and (max-width: 1300px){
+    header .container-header{
+        padding: 10px 0;
+    }
+    header .container-links ul .link a {
+        font-size: 1rem;
+        gap: 5px;
+    }
+    header .container-links ul{
+        gap: 40px;
+    }
+    header .btn-login {
+        font-size: 0.8rem;
+        padding: 4px 11px;
+    }
+    header .logo-pescarte{
+        width: 135px;
+        height: 43px;
+    }
+    .btn-login svg{
+        width: 18px;
+    }
+}
+@media only screen and (max-width: 1023px){
+    header .hamburguer-menu{
+        display: block;
+    }
+    header .hamburguer-menu.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    header .hamburguer-menu.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    header .hamburguer-menu.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    header .container-links, header .btn-login{
+        position: fixed;
+        right: -1000px;
+        top: 60px;
+        transition: .5s ease-in;
+        z-index: 999;
+    }
+    header .container-links.active{
+        right: 0;
+        transition: .5s ease;
+    }
+    header .btn-login.active{
+        right: 10px;
+        transition: .5s ease;
+    }
+    header .container-links{
+        background-color: #ffffff;
+        width: 100%;
+        height: 100%;
+        padding-top: 20px;
+    }
+    header .container-links ul{
+        flex-direction: column;
+        gap: 20px;
+    }
+    header .container-links ul .link a{
+        border-bottom: 2px solid #e7e7e7;
+        justify-content: space-between;
+        padding: 5px 10px;
+    }
+    header .btn-login{
+        bottom: 300px;
+        top: unset;
+    }
+}
