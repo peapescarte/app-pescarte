@@ -1,149 +1,304 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/index-style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <script src="script/script.js" defer="true"></script>
+    <script src="script/datepicker.js" defer="true"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/home.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <title>App Pescarte</title>
 </head>
 <body>
     <header>
-        <div class="container-logo">
-            <img src="img/pescarte-logo.png" alt="Logo pescarte" title="Logo Pescarte">
-            <img src="img/fundo-Header3.png" alt="Fundo de um mar com peixes">
+        <div class="container-header">
+            <img class="logo-pescarte" src="assets/images/logo-pescarte.png" alt="Logo Pescarte">
+            <nav class="container-links">
+                <ul>
+                    <li class="link">
+                        <a href="">Institucional
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9L12 15L18 9" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="link">
+                        <a href="">Pesquisa
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9L12 15L18 9" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="link">
+                        <a href="">Pesca
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9L12 15L18 9" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        
+                    </li>
+                </ul>
+            </nav>
+            <button class="btn-login">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 17L15 12L10 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 12H3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Acessar</span>    
+            </button>
+            <div class="hamburguer-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
-    <main>
-        <div class="container-main">
-            <h1>Dados Abertos sobre Cotações de Pescados</h1>
-            <div class="container-date-refresh">
-                <h3>Última atualização: <span class="date-refresh-bd">21/12/2022</span></h3>
-                <div class="refresh-bd">
-                    <img src="img/refresh-logo.png" alt="Logo de atualização" title="Atualizar base de dados">
+    <main class="content-main">
+        <div class="container-banner">
+            <img src="assets/images/banner-home.png" alt="">
+        </div>
+        <section class="container-page">
+            <div class="container-title-date">
+                <h1 class="title-page">Dados Abertos sobre Cotações de Pescados</h1>
+                <div class="container-date">
+                    <h3>Ultima atualização: <span>21/12/2022</span></h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="refresh-ccw">
+                        <path id="Vector" d="M3 2V8H9" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_2" d="M21 12C20.9984 10.2633 20.4944 8.56416 19.5487 7.10752C18.6031 5.65088 17.2562 4.49895 15.6705 3.79067C14.0848 3.0824 12.3281 2.84803 10.6121 3.11584C8.89623 3.38365 7.29445 4.14219 6 5.29998L3 7.99998" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_3" d="M21 22V16H15" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_4" d="M3 12C3.00158 13.7367 3.5056 15.4358 4.45125 16.8925C5.39691 18.3491 6.74382 19.501 8.32951 20.2093C9.9152 20.9176 11.6719 21.152 13.3879 20.8841C15.1038 20.6163 16.7056 19.8578 18 18.7L21 16" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
                 </div>
             </div>
-            <h2>Período</h2>
-            <div class="container-date">
-                <input type="date" name="data-inicio" id="data-inicio">
-                <input type="date" name="data-fim" id="data-fim">
-            </div>
-            <div class="container-filter">
-                <div class="box-filter container-fontes">
-                    <h2>Fontes:</h2>
-                    <div class="fontes">
-                        <div class="fonte">
-                            <input type="checkbox" name="ceasa" id="ceasa">
-                            <label for="ceasa">CEASA</label>
+            <div class="btn-mobile-filter">Pesquise</div>
+            <form action="" method="" id="filter-form">
+                <div class="container-input fontes-input">
+                    <label for="fontes">Fonte</label>
+                    <select name="fontes" id="fontes" form="filter-form">
+                        <option value="" selected>Todos</option>
+                        <option value="Ceasa">Ceasa</option>
+                        <option value="Mercado A">Mercado A</option>
+                        <option value="Mercado B">Mercado B</option>
+                        <option value="Mercado C">Mercado C</option>
+                    </select>
+                </div>
+                <div class="container-input data-input">
+                    <label for="date">Período</label>
+                    <div class="active-tab-periodo">
+                        <span>Selecione a data: </span>
+                    </div>
+                    <div class="container-periodo">
+                        <div class="btns-data-periodo">
+                            <div class="btn-periodo">Período</div>
+                            <div class="btn-data disable">Data</div>
+                            <div class="svg-calendar disable">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="calendar-days">
+                                    <path id="Vector" d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_2" d="M16 2V6" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_3" d="M8 2V6" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_4" d="M3 10H21" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_5" d="M8 14H8.01" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_6" d="M12 14H12.01" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_7" d="M16 14H16.01" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_8" d="M8 18H8.01" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_9" d="M12 18H12.01" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_10" d="M16 18H16.01" stroke="#404040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            
+                            <select name="year" id="year-select" class="">
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                            </select>
                         </div>
-                        <div class="fonte">
-                            <input type="checkbox" name="SUPERMERCADO-A" id="ceasa">
-                            <label for="SUPERMERCADO-A">SUPERMERCADO A</label>
-                        </div>
-                        <div class="fonte">
-                            <input type="checkbox" name="SUPERMERCADO-B" id="supermercado-b">
-                            <label for="SUPERMERCADO-B">SUPERMERCADO B</label>
-                        </div>
-                        <div class="fonte">
-                            <input type="checkbox" name="OUTROS" id="outros">
-                            <label for="OUTROS">OUTROS</label>
-                        </div>
-                        <div class="fonte">
-                            <input type="checkbox" name="OUTROS" id="outros">
-                            <label for="OUTROS">OUTROS</label>
-                        </div>
-                        <div class="fonte">
-                            <input type="checkbox" name="OUTROS" id="outros">
-                            <label for="OUTROS">OUTROS</label>
-                        </div>
-                        <div class="fonte">
-                            <input type="checkbox" name="OUTROS" id="outros">
-                            <label for="OUTROS">OUTROS</label>
+                        <div id="datepicker" class="disable"></div>
+                        <input type="text" id="calendario" class="disable" />
+                        <div class="periodos">
+                            <span>Páscoa</span>
+                            <span>Natal</span>
+                            <span>Réveillon</span>
+                            <span>Semana Santa</span>
+                            <span>Exemplo</span>
                         </div>
                     </div>
                 </div>
-                <div class="box-filter search-pescados">
-                    <button>Escolher Pescados</button>
+                <div class="container-input pescados-input">
+                    <label for="pescados">Pescados</label>
+                    <div class="active-tab-pescados">
+                        <span>Selecione os pescados: </span>
+                    </div>
+                    <div class="container-pescados">
+                        <div class="input-container-checkbox">
+                            <label for="tilapia">Tilapia</label>
+                            <input type="checkbox" name="tilapia" id="tilapia">
+                        </div>
+                        <div class="input-container-checkbox">
+                            <label for="salmao">Salmão</label>
+                            <input type="checkbox" name="salmao" id="salmao">
+                        </div>
+                        <div class="input-container-checkbox">
+                            <label for="pacu">Pacu</label>
+                            <input type="checkbox" name="pacu" id="pacu">
+                        </div>
+                        <div class="input-container-checkbox">
+                            <label for="traira">Traira</label>
+                            <input type="checkbox" name="traira" id="traira">
+                        </div>
+                        <div class="input-container-checkbox">
+                            <label for="merlusa">Merlusa</label>
+                            <input type="checkbox" name="merlusa" id="merlusa">
+                        </div>
+                    </div>
                 </div>
+                <div class="container-input price-input">
+                    <label for="price">Faixa de Preço</label>
+                    <select name="price" id="price" form="filter-form">
+                        <option value="0-100" selected>R$0 - R$100</option>
+                        <option value="100-200">R$100 - R$200</option>
+                        <option value="200-300">R$200 - R$300</option>
+                    </select>
+                </div>
+                <div class="container-btns-forms">
+                    <button class="submit-form" type="submit">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="fish 1">
+                        <path id="Vector" d="M6.5 12C7.44 8.54 11.44 6 15 6C18.56 6 21.06 8.54 22 12C21.06 15.47 18.56 18 15 18C11.44 18 7.44 15.47 6.5 12Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_2" d="M18 12V12.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_3" d="M16 17.93C14.6992 16.2268 13.9945 14.1431 13.9945 12C13.9945 9.85688 14.6992 7.77322 16 6.07001" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_4" d="M6.99998 10.67C6.99998 8 5.57998 5.97 2.72998 5.5C1.72998 7 1.72998 10.5 2.95998 12C1.71998 13.5 1.71998 17 2.72998 18.5C5.57998 18.03 6.99998 16 6.99998 13.33" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_5" d="M10.46 7.26001C10.2 5.88001 9.17 4.24001 8 3.00001H13.8C14.2745 2.99826 14.7342 3.16526 15.0969 3.47118C15.4596 3.7771 15.7017 4.20202 15.78 4.67001L16.01 6.07001" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_6" d="M16.01 17.93L15.78 19.33C15.7017 19.798 15.4596 20.2229 15.0969 20.5289C14.7342 20.8348 14.2745 21.0018 13.8 21H9.5C10.4689 19.9015 10.9993 18.4847 10.99 17.02" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <span>Gerar Dados</span>    
+                    </button>
+                    <div class="fechar-filtro">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                            
+                        <span>Fechar</span>  
+                    </div>
+                </div>
+                
+            </form>
+            <div class="container-tabela">
+                <table class="resultados-gerados">
+                <tr>
+                  <th>Nome</th>
+                  <th>Mínimo</th>
+                  <th>Mais Comum</th>
+                  <th>Máximo</th>
+                </tr>
+                <tr>
+                  <td>Nome do peixe</td>
+                  <td><span>R$ 00,00</span> /kg</td>
+                  <td><span>R$ 00,00</span> /kg</td>
+                  <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+                <tr>
+                    <td>Nome do peixe</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                    <td><span>R$ 00,00</span> /kg</td>
+                </tr>
+            </table>
             </div>
-            <div class="container-view-data">
-                <button class="view-data">Visualizar</button>
-                <button class="export-data">Exportar</button>
+            
+            <div class="btns-carregar-exportar">
+                <button class="btn-carregar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="plus-circle">
+                        <path id="Vector" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_2" d="M12 8V16" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_3" d="M8 12H16" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <span>Carregar Mais</span>    
+                </button>
+                <button class="btn-exportar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="download">
+                        <path id="Vector" d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_2" d="M7 10L12 15L17 10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_3" d="M12 15V3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <span>Exportar Dados</span>    
+                </button>
             </div>
-        </div>
+        </section>
     </main>
     <footer>
-        <svg width="2441" height="99" viewBox="0 0 2441 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0L101.708 12.3712C203.417 24.7425 406.833 49.4849 610.25 49.4849C813.667 49.4849 1017.08 24.7425 1220.5 16.495C1423.92 8.24749 1627.33 16.495 1830.75 16.495C2034.17 16.495 2237.58 8.24749 2339.29 4.12375L2441 0V98.9699H2339.29C2237.58 98.9699 2034.17 98.9699 1830.75 98.9699C1627.33 98.9699 1423.92 98.9699 1220.5 98.9699C1017.08 98.9699 813.667 98.9699 610.25 98.9699C406.833 98.9699 203.417 98.9699 101.708 98.9699H0V0Z" fill="#8ACFFF"/>
-        </svg>
         <div class="container-footer">
-            <img src="img/pescarte-logo-footer.png" alt="Logo de Pescarte" title="Logo de Pescarte">
-            <img src="img/ipead.png" alt="Logo da Fundação Instituto de Pesquisas Econômicas, Administrativas e Contábeis" title="Logo da Fundação Instituto de Pesquisas Econômicas, Administrativas e Contábeis">
-            <img src="img/uenf.png" alt="Logo da Universidade Estadual do Norte Fluminense Darcy Ribeiro" title="Logo da Universidade Estadual do Norte Fluminense Darcy Ribeiro">
-            <img src="img/petrobras.png" alt="Logo da Petrobras" title="Logo da Petrobras">
-            <img src="img/ibama.png" alt="Logo do IBAMA" title="Logo do IBAMA">
-            <p>A realização do Projeto Pescarte é uma medida de mitigação exigida pelo licenciamento ambiental federal, conduzido pelo IBAMA.</p>
+            <img src="assets/images/ibama-logo.png" alt="Logo do Ibama">
+            <img src="assets/images/uenf-logo.png" alt="Logo da Uenf">
+            <img src="assets/images/petrobras-logo.png" alt="Logo da Petrobras">
+            <img src="assets/images/logo-ipead.png" alt="Logo do ipead">
+            <p class="text-footer">A realização do Projeto Pescarte é uma medida de mitigação exigida pelo licenciamento ambiental federal, conduzido pelo IBAMA.</p>
         </div>
     </footer>
-    <div class="modal-pescados">
-        <div class="container-pescados">
-            <div class="row-container-top">
-                <div class="col-container">
-                    <h2 class="select-pescados">Escolha o Pescado</h2>
-                    <form action="" class="search">
-                        <input type="search" id="text" list="historico">
-                        <img src="img/lupa.png" alt="">
-
-                        <datalist id="historico">
-                            <option value="Python">Python</option>
-                            <option value="HTMl">HTMl</option>
-                            <option value="CSS">CSS</option>
-                            <option value="JS">JS</option>
-                        </datalist>
-                    </form>
-                </div>
-                <div class="col-container">
-                    <h2>Filtrar por Preço</h2>
-                    <input type="range" min="0" max="1000" step="1" id="range-value">
-                    <p>Value: R$<output id="value-select"></output>,00</p>
-                </div>
-            </div>
-            <div class="row-container-bottom">
-                <ul>
-                    <li><input type="checkbox" name="Peixe 1" id="">Peixe 1</li>
-                    <li><input type="checkbox" name="Peixe 2" id="">Peixe 2</li>
-                    <li><input type="checkbox" name="Peixe 3" id="">Peixe 3</li>
-                    <li><input type="checkbox" name="Peixe 4" id="">Peixe 4</li>
-                    <li><input type="checkbox" name="Peixe 5" id="">Peixe 5</li>
-                    <li><input type="checkbox" name="Peixe 6" id="">Peixe 6</li>
-                    <li><input type="checkbox" name="Peixe 7" id="">Peixe 7</li>
-                    <li><input type="checkbox" name="Peixe 8" id="">Peixe 8</li>
-                    <li><input type="checkbox" name="Peixe 9" id="">Peixe 9</li>
-                    <li><input type="checkbox" name="Peixe 10" id="">Peixe 10</li>
-                    <li><input type="checkbox" name="Peixe 11" id="">Peixe 11</li>
-                    <li><input type="checkbox" name="Peixe 12" id="">Peixe 12</li>
-                    <li><input type="checkbox" name="Peixe 13" id="">Peixe 13</li>
-                </ul>
-                <ul>
-                    <li><input type="checkbox" name="Peixe 14" id="">Peixe 14</li>
-                    <li><input type="checkbox" name="Peixe 15" id="">Peixe 15</li>
-                    <li><input type="checkbox" name="Peixe 16" id="">Peixe 16</li>
-                    <li><input type="checkbox" name="Peixe 17" id="">Peixe 17</li>
-                    <li><input type="checkbox" name="Peixe 18" id="">Peixe 18</li>
-                    <li><input type="checkbox" name="Peixe 19" id="">Peixe 19</li>
-                    <li><input type="checkbox" name="Peixe 20" id="">Peixe 20</li>
-                    <li><input type="checkbox" name="Peixe 21" id="">Peixe 21</li>
-                    <li><input type="checkbox" name="Peixe 22" id="">Peixe 22</li>
-                    <li><input type="checkbox" name="Peixe 23" id="">Peixe 23</li>
-                    <li><input type="checkbox" name="Peixe 24" id="">Peixe 24</li>
-                    <li><input type="checkbox" name="Peixe 25" id="">Peixe 25</li>
-                    <li><input type="checkbox" name="Peixe 26" id="">Peixe 26</li>
-                </ul>
-            </div>
-            <div class="button-confirm"><button>Confirmar</button></div>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+ </body>
 </html>

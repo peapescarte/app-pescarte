@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+@font-face {
+    font-family: "WorkSans-light";
+    src: url(../assets/fonts/WorkSans-Light.ttf);
+}
+@font-face {
+    font-family: "WorkSans-regular";
+    src: url(../assets/fonts/WorkSans-Medium.ttf);
+}
+@font-face {
+    font-family: "WorkSans-bold";
+    src: url(../assets/fonts/WorkSans-Bold.ttf);
+}
+
+body{
+    font-family: "WorkSans-regular";
+    color: var(--color-text);
+}
+body.hidden{
+    overflow: hidden;
+}
+:root {
+    --color-primary: #0064C8;
+    --color-text: #404040;
+    --color-table: #99C1E9;
+}
+

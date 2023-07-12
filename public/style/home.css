@@ -1,0 +1,479 @@
+.content-main .container-banner img{
+    width: 100%;
+}
+.container-page{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 64px;
+    flex-direction: column;
+    max-width: 1600px;
+
+}
+.container-page .container-title-date{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.container-page .container-title-date .title-page{
+    font-family: "WorkSans-bold";
+    font-size: 2.5rem;
+    color: var(--color-text);
+}
+.container-page .container-title-date .container-date{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.container-page .container-title-date h3{
+    font-family: "WorkSans-light";
+    font-size: 1rem;
+}
+.container-page #filter-form{
+    display: flex;
+    margin: 48px 0;
+    width: 100%;
+    gap: 40px;
+    justify-content: space-between;
+    /* padding-bottom: 200px; */
+}
+.container-page .container-input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+.container-page .container-input label{
+    font-size: 1rem;
+}
+.container-page .container-input select, .active-tab-pescados, .active-tab-periodo{
+    width: max-content;
+    height: min-content;
+    padding: 12px;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-family: "WorkSans-regular";
+    cursor: pointer;
+}
+.active-tab-periodo{
+    width: 295px;
+}
+.container-page .container-periodo{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background: #fff;
+    top: 90px;
+}
+.container-page .container-periodo.active{
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: .5s ease;
+    box-shadow: 0px 0px 4px 0px #0202024f;
+
+}
+.container-page .container-periodo .btns-data-periodo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #e7e7e7;
+    padding-bottom: 10px;
+}
+.container-page .container-periodo .btns-data-periodo .btn-periodo, .btns-data-periodo .btn-data, button.submit-form, .btn-mobile-filter{
+    background-color: var(--color-primary);
+    color: #fff;
+    font-family: "WorkSans-regular";
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    transition: .5s ease;
+    cursor: pointer;
+}
+.btn-mobile-filter{
+    display: none;
+}
+button.submit-form{
+    height: 44px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 30px;
+}
+.container-page .container-periodo .btns-data-periodo .btn-periodo.disable, .btns-data-periodo .btn-data.disable{
+    opacity: .5;
+    transition: .5s ease;
+}
+.svg-calendar.disable, #year-select.disable, #calendario.disable, .periodos.disable, #datepicker.disable{
+    display: none !important;
+}
+#year-select{
+    border: none;
+}
+.container-page #filter-form .periodos{
+    display: flex;
+    flex-direction: column;
+}
+.container-page #filter-form .periodos span{
+    padding: 7px 0;
+    cursor: pointer;
+    border-radius: 7px;
+    padding-left: 5px;
+    transition: .3s ease;
+}
+.container-page #filter-form .periodos span:hover, .input-container-checkbox:hover{
+    background-color: #e7e7e7;
+    transition: .3s ease;
+}
+#calendario{
+    opacity: 0;
+}
+#datepicker{
+    margin-left: -3px;
+    margin-top: -5px;
+    border: none;
+}
+#datepicker .ui-datepicker-inline{
+    border: none;
+    font-family: "WorkSans-light";
+}
+.ui-widget-header .ui-icon{
+    background-image: none;
+    position: relative !important;
+}
+.ui-icon-circle-triangle-e:after, .ui-icon-circle-triangle-w:after{
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border: 2px solid #000;
+    border-left: none;
+    border-top: none;
+    transform: rotate(-45deg);
+    top: 5px;
+    left: 0;
+    cursor: pointer;
+}
+.ui-icon-circle-triangle-w:after{
+    transform: rotate(135deg);
+    left: 5px;
+}
+.ui-state-hover{
+    background: none !important;
+    border: none !important;
+}
+.ui-datepicker .ui-datepicker-header{
+    background: unset;
+    border: none;
+    border-bottom: 2px solid #e7e7e7;
+}
+.ui-datepicker th{
+    color: #9f9f9f;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    background: none;
+    display: flex;
+    justify-content: center;
+    border: none;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.ui-state-default:hover{
+    background: #e7e7e7 !important;
+}
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary, .ui-widget-header .ui-priority-secondary{
+    opacity: .5;
+}
+.container-pescados {
+    display: flex;
+    flex-direction: column;
+    width: 190px;
+    box-shadow: 0px 0px 4px 0px #0202024f;
+    padding: 20px 10px;
+    border-radius: 5px;
+    gap: 6px;
+    overflow-y: scroll;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition: .5s ease;
+    position: absolute;
+    top: 90px;
+    background: #fff;
+}
+.container-pescados.active{
+    opacity: 1;
+    visibility: visible;
+    height: 227px;
+    transition: .5s ease;
+}
+.input-container-checkbox {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: .5s ease;
+}
+.input-container-checkbox label{
+    width: 100%;
+}
+.container-pescados::-webkit-scrollbar {
+    width: 5px;   
+  }
+.container-pescados::-webkit-scrollbar-track {
+    background: #e7e7e7;    
+}
+.container-pescados::-webkit-scrollbar-thumb {
+    background-color: #909090;   
+    border-radius: 20px;      
+}
+.resultados-gerados{
+    width: 100%;
+}
+.container-page .resultados-gerados tr{
+    display: flex;
+}
+.container-page .resultados-gerados tr th, .container-page .resultados-gerados tr td{
+    border: 1px solid var(--color-table);
+    padding: 16px 64px;
+    width: 100%;
+    text-align: center;
+}
+.container-page .resultados-gerados tr th{
+    font-size: 1.25rem;
+    background-color: var(--color-primary);
+    color: #fff;
+    font-weight: normal;
+}
+.container-page .resultados-gerados tr th:first-child, .container-page .resultados-gerados tr td:first-child{
+    text-align: left;
+}
+.container-page .resultados-gerados tr th:first-child{
+    border-radius: 4px 0 0 0;
+}
+.container-page .resultados-gerados tr th:last-child{
+    border-radius: 0 4px 0 0;
+}
+.container-page .resultados-gerados tr:last-child td:last-child{
+    border-radius: 0 0 4px 0;
+}
+.container-page .resultados-gerados tr:last-child td:first-child{
+    border-radius: 0 0 0 4px;
+}
+.container-page .btns-carregar-exportar{
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    justify-content: center;
+    margin-bottom: 64px;
+}
+.container-page .btns-carregar-exportar button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-primary);
+    color: #fff;
+    font-family: "WorkSans-regular";
+    font-size: 1rem;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fechar-filtro{
+    display: none;
+}
+@media only screen and (max-width: 1300px){
+    .container-page .container-title-date .title-page {
+        font-size: 1.6rem;
+    }
+    .container-page .container-title-date h3, .container-page .container-input label {
+        font-size: 0.8rem;
+    }
+    .container-page .container-date svg{
+        width: 20px;
+    }
+    .container-page .container-input select, .active-tab-pescados, .active-tab-periodo {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+    .container-page #filter-form {
+        margin-top: 28px;
+        gap: 20px;
+    }
+    .container-page .container-periodo .btns-data-periodo .btn-periodo, .btns-data-periodo .btn-data, button.submit-form{
+        font-size: 0.8rem;
+        padding: 7px 11px;
+    }
+    .container-page .container-periodo .btns-data-periodo {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .container-page #filter-form .periodos span {
+        padding: 5px 0px 5px 5px;
+        font-size: 0.8rem;
+    }
+    .container-page .container-periodo {
+        width: 230px;
+        top: 70px;
+    }
+    #datepicker .ui-datepicker-inline {
+        width: 228px;
+    }
+    .ui-datepicker table {
+        font-size: 0.83em;
+    }
+    .ui-datepicker .ui-datepicker-title {
+        font-size: 1rem;
+    }
+    .active-tab-periodo {
+        width: 233px;
+    }
+    .container-pescados {
+        width: 155px;
+        padding: 10px 5px;
+        top: 70px;
+    }
+    .submit-form svg{
+        width: 20px;
+    }
+    button.submit-form {
+        height: 35.2px;
+        margin-top: 25px;
+        gap: 8px;
+    }
+    .container-page .resultados-gerados tr th, .container-page .resultados-gerados tr td {
+        padding: 8px 35px;
+    }
+    .container-page .resultados-gerados tr th {
+        font-size: 1.05rem;
+        background-color: var(--color-primary);
+        color: #fff;
+        font-weight: normal;
+    }
+    .container-page .resultados-gerados tr td{
+        font-size: 0.8rem;
+    }
+    .container-page .btns-carregar-exportar button{
+        font-size: 0.8rem;
+        padding: 4px 11px;
+    }
+    .container-page .btns-carregar-exportar button svg{
+        width: 18px;
+    }
+}
+
+@media only screen and (max-width: 1023px){
+    .container-page{
+        width: 95%;
+        max-width: 100%;
+    }
+    .container-page .container-title-date{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .container-page .container-title-date .title-page{
+        font-size: 1.25rem;
+        text-align: center;
+    }
+    .btn-mobile-filter{
+        display: flex;
+        height: 20px;
+        max-width: 250px;
+        justify-content: center;
+        margin: 30px auto 0;
+        width: 100%;
+    }
+    #filter-form{
+        position: fixed;
+        flex-direction: column;
+        background-color: #fff;
+        top: 60px;
+        left: -1000px;
+        height: 100%;
+        margin-top: 0 !important;
+        gap: 20px !important;
+        justify-content: flex-start !important;
+        transition: .5s ease;
+        padding-top: 30px;
+    }
+    #filter-form.active{
+        display: flex !important;
+        left: 0;
+        transition: .5s ease;
+    }
+    .container-tabela{
+        width: 100%;
+        overflow-x: scroll;
+        margin-top: 30px;
+    }
+    .container-tabela::-webkit-scrollbar {
+       display: none;  
+      }
+      .container-page .resultados-gerados tr th, .container-page .resultados-gerados tr td{
+        width: 200px;
+        padding: 10px;
+      }
+      .container-page .container-input{
+        width: 95%;
+        margin: 0 auto;
+      }
+      .container-page .container-input select, .active-tab-pescados, .active-tab-periodo{
+        width: 100%;
+      }
+      .active-tab-pescados, .active-tab-periodo{
+        width: 94.4%;
+      }
+      .container-page .container-periodo{
+        z-index: 99;
+        width: 94.5%;
+      }
+      #datepicker .ui-datepicker-inline{
+        width: 100%;
+      }
+      .container-pescados{
+        width: 97%;
+        z-index: 99;
+      }
+      button.submit-form{
+        width: max-content;
+        margin-top: unset;
+      }
+      .container-btns-forms{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        margin: 0 auto;
+      }
+      .container-btns-forms .fechar-filtro{
+        display: flex;
+        align-items: center;
+        color: var(--color-primary);
+        font-size: 1rem;
+        border: 2px solid #e7e7e7;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .container-btns-forms .fechar-filtro svg{
+        width: 18px;
+      }
+    }

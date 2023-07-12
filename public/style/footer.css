@@ -1,0 +1,32 @@
+footer{
+    padding: 32px;
+    border-top: 2px solid #e7e7e7;
+}
+footer .container-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1600px;
+    gap: 32px;
+    margin: 0 auto;
+}
+footer .container-footer .text-footer{
+    max-width: 410px;
+    font-size: 0.75rem;
+    color: var(--color-primary);
+}
+@media only screen and (max-width: 1023px){
+    footer{
+        padding: 20px 0;
+    }
+    footer .container-footer{
+        flex-wrap: wrap;
+    }
+    footer .container-footer img{
+        width: fit-content;
+    }
+    footer .container-footer .text-footer{
+        text-align: center;
+    }
+}
