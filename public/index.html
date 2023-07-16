@@ -4,19 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-    <script src="https://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <script src="script/script.js" defer="true"></script>
+    <!-- jQuery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <!-- jQuery UI CSS -->
+    <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+    <!-- jQuery UI -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <!-- Moment JS -->
+    <script src='script/moment.min.js'></script>
     <script src="script/datepicker.js" defer="true"></script>
+    <script src="script/requests.js" defer="true"></script>
+    <script src="script/script.js" defer="true"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/header.css">
     <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/datepicker.css">
     <link rel="stylesheet" href="style/home.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <title>App Pescarte</title>
 </head>
 <body>
+    <div class="fade"></div>
+    <div class="loader">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="refresh-ccw">
+            <path id="Vector" d="M3 2V8H9" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_2" d="M21 12C20.9984 10.2633 20.4944 8.56416 19.5487 7.10752C18.6031 5.65088 17.2562 4.49895 15.6705 3.79067C14.0848 3.0824 12.3281 2.84803 10.6121 3.11584C8.89623 3.38365 7.29445 4.14219 6 5.29998L3 7.99998" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_3" d="M21 22V16H15" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_4" d="M3 12C3.00158 13.7367 3.5056 15.4358 4.45125 16.8925C5.39691 18.3491 6.74382 19.501 8.32951 20.2093C9.9152 20.9176 11.6719 21.152 13.3879 20.8841C15.1038 20.6163 16.7056 19.8578 18 18.7L21 16" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+    </div>
     <header>
         <div class="container-header">
             <img class="logo-pescarte" src="assets/images/logo-pescarte.png" alt="Logo Pescarte">
@@ -70,14 +88,6 @@
                 <h1 class="title-page">Dados Abertos sobre Cotações de Pescados</h1>
                 <div class="container-date">
                     <h3>Ultima atualização: <span>21/12/2022</span></h3>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="refresh-ccw">
-                        <path id="Vector" d="M3 2V8H9" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path id="Vector_2" d="M21 12C20.9984 10.2633 20.4944 8.56416 19.5487 7.10752C18.6031 5.65088 17.2562 4.49895 15.6705 3.79067C14.0848 3.0824 12.3281 2.84803 10.6121 3.11584C8.89623 3.38365 7.29445 4.14219 6 5.29998L3 7.99998" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path id="Vector_3" d="M21 22V16H15" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path id="Vector_4" d="M3 12C3.00158 13.7367 3.5056 15.4358 4.45125 16.8925C5.39691 18.3491 6.74382 19.501 8.32951 20.2093C9.9152 20.9176 11.6719 21.152 13.3879 20.8841C15.1038 20.6163 16.7056 19.8578 18 18.7L21 16" stroke="#0064C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                    </svg>
                 </div>
             </div>
             <div class="btn-mobile-filter">Pesquise</div>
@@ -86,16 +96,15 @@
                     <label for="fontes">Fonte</label>
                     <select name="fontes" id="fontes" form="filter-form">
                         <option value="" selected>Todos</option>
-                        <option value="Ceasa">Ceasa</option>
-                        <option value="Mercado A">Mercado A</option>
-                        <option value="Mercado B">Mercado B</option>
-                        <option value="Mercado C">Mercado C</option>
                     </select>
                 </div>
                 <div class="container-input data-input">
                     <label for="date">Período</label>
                     <div class="active-tab-periodo">
-                        <span>Selecione a data: </span>
+                        <div class="container-input-date">
+                            <input type="text" id="start_date" placeholder="Selecione a data:"/>
+                            <input type="text" id="end_date" />
+                        </div>
                     </div>
                     <div class="container-periodo">
                         <div class="btns-data-periodo">
@@ -125,14 +134,21 @@
                                 <option value="2020">2020</option>
                             </select>
                         </div>
-                        <div id="datepicker" class="disable"></div>
-                        <input type="text" id="calendario" class="disable" />
-                        <div class="periodos">
+                        <div class="dates disable">
+                            <div class="dates--settings">
+                                <div class="dates--settings--section">
+                                    <button id="clear">Clear</button>
+                                </div>
+                            </div>
+                            <div class="dates--pickers">
+                                <div id="datepicker" class="disable"></div>
+                            </div>
+                        </div>      
+                        <div id="js--periodos" class="periodos">
                             <span>Páscoa</span>
                             <span>Natal</span>
                             <span>Réveillon</span>
                             <span>Semana Santa</span>
-                            <span>Exemplo</span>
                         </div>
                     </div>
                 </div>
@@ -204,66 +220,6 @@
                   <th>Mínimo</th>
                   <th>Mais Comum</th>
                   <th>Máximo</th>
-                </tr>
-                <tr>
-                  <td>Nome do peixe</td>
-                  <td><span>R$ 00,00</span> /kg</td>
-                  <td><span>R$ 00,00</span> /kg</td>
-                  <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                </tr>
-                <tr>
-                    <td>Nome do peixe</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
-                    <td><span>R$ 00,00</span> /kg</td>
                 </tr>
             </table>
             </div>

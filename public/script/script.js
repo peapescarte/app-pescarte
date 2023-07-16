@@ -20,6 +20,7 @@ data.on( "click", function() {
         inputPeriodo.addClass("disable");
         inputCalendario.removeClass("disable");
         $("#datepicker").removeClass("disable");
+        $(".dates").removeClass("disable");
     }
 });
 
@@ -32,15 +33,32 @@ periodo.on( "click", function() {
         inputPeriodo.removeClass("disable");
         inputCalendario.addClass("disable");
         $("#datepicker").addClass("disable");
+        $(".dates").addClass("disable");
     }
 });
 
 $(".active-tab-pescados").on( "click", function() {
     $(".container-pescados").toggleClass("active");
+    if(!$(".fade").hasClass("active")){
+        $(".fade").addClass("active");
+    }
 });
 
 $(".active-tab-periodo").on( "click", function() {
     $(".container-periodo").toggleClass("active");
+    if(!$(".fade").hasClass("active")){
+        $(".fade").addClass("active");
+    }
+});
+
+$(".fade").on( "click", function() {
+    $(".fade").toggleClass("active");
+    if($(".container-periodo").hasClass("active")){
+        $(".container-periodo").removeClass("active");
+    }
+    if($(".container-pescados").hasClass("active")){
+        $(".container-pescados").removeClass("active");
+    }
 });
 
 $(".fechar-filtro").on( "click", function() {

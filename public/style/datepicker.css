@@ -1,0 +1,67 @@
+.dates {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .dates--pickers {
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+  
+  .dates--settings {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  
+  .ui-state-default.ui-state-active {
+    background: #f6f6f6;
+    color: #454545;
+  }
+  
+  .active > a.ui-state-default,
+.active > a.ui-state-default.ui-state-active {
+  background: red;
+  border: 1px solid red;
+  color: #fff;
+}
+.ui-widget-header {
+    background: transparent;
+    border-width: 0 0 1px 0;
+  }
+  
+  .ui-widget-header .ui-state-hover {
+    border: transparent;
+  }
+  
+  .ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover {
+    top: 2px;
+  }
+  
+  .ui-datepicker .ui-datepicker-prev-hover {
+    left: 2px;
+  }
+  
+  .ui-datepicker .ui-datepicker-next-hover {
+    right: 2px;
+  }
+  
+  .ui-datepicker .ui-datepicker-prev span {
+    background-position: -96px 0;
+  }
+  
+  .ui-datepicker .ui-datepicker-next span {
+    background-position: -32px 0;
+  }
+  
+  .ui-datepicker th {
+    padding: 1em 0;
+    background: transparent;
+  }
+  
+  .ui-datepicker td .ui-state-default {
+    padding: 0.5em;
+  }
+ .dates--settings--section #clear{
+    display: none;
+ }
