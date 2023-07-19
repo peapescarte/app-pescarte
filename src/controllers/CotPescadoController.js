@@ -3,6 +3,7 @@ import CotPescado from "../models/CotPescado";
 import Sequelize from "sequelize";
 import Pescado from "../models/Pescado";
 const jwt = require('jsonwebtoken');
+const url = require('url');
 
 class CotPescadoController{
 
@@ -19,19 +20,19 @@ class CotPescadoController{
         
         let where = {};
 
-        if(req.body.fonte || req.body.inicio || req.body.fim){
+        if(req.query.fonte || req.query.inicio || req.query.fim){
             where[Op.and] = [];
 
-            if(req.body.fonte){
+            if(req.query.fonte){
                 where[Op.and].push({
-                    fonte: req.body.fonte
+                    fonte: req.query.fonte
                 });
             }
 
-            if(req.body.inicio && req.body.fim){
+            if(req.query.inicio && req.query.fim){
                 where[Op.and].push({
                     data: {
-                        [Op.between]: [req.body.inicio, req.body.fim]
+                        [Op.between]: [req.query.inicio, req.query.fim]
                     }
                 });
             }
@@ -57,9 +58,6 @@ class CotPescadoController{
 
     async date(req, res){{
 
-        // const token = req.headers.authorization;
-        // if (!token) return res.status(401).send('Access Denied');
-
         const date = await CotPescado.findAll({
             order: [['data', 'DESC']],
             attributes: ['data'],
@@ -74,25 +72,25 @@ class CotPescadoController{
 
         let where = {}
 
-        if(req.body.fonte || req.body.pescado || req.body.inicio || req.body.fim){
+        if(req.query.fonte || req.query.pescado || req.query.inicio || req.query.fim){
             where[Op.and] = [];
 
-            if(req.body.fonte){
+            if(req.query.fonte){
                 where[Op.and].push({
-                    fonte: req.body.fonte
+                    fonte: req.query.fonte
                 });
             }
 
-            if(req.body.pescado){
+            if(req.query.pescado){
                 where[Op.and].push({
-                    '$Pescado.cod_pescado$': req.body.pescado
+                    '$Pescado.cod_pescado$': req.query.pescado
                 });
             }
 
-            if(req.body.inicio && req.body.fim){
+            if(req.query.inicio && req.query.fim){
                 where[Op.and].push({
                     data: {
-                        [Op.between]: [req.body.inicio, req.body.fim]
+                        [Op.between]: [req.query.inicio, req.query.fim]
                     }
                 });
             }
@@ -135,13 +133,12 @@ class CotPescadoController{
 
     }
 
-    async pescados(req, res){
-
-        const fonte = req.body.fonte;
-
-        if (req.body.data){
-            const data = req.body.data
-
+    async pescados(req, res) {
+        const fonte = req.query.fonte;
+    
+        if (req.query.data) {
+            const data = req.query.data;
+    
             const query = await CotPescado.findAll({
                 where: {
                     data: data,
@@ -150,41 +147,39 @@ class CotPescadoController{
                 attributes: [],
                 include: [
                     {
-                      model: Pescado,
-                      attributes: ['descricao', 'cod_pescado'],
+                        model: Pescado,
+                        attributes: ['descricao', 'cod_pescado'],
                     }
                 ],
                 raw: true,
                 distinct: true
-            })
-
-            res.status(200).json(query.map(item => ({'nome': item['Pescado.descricao'], 'cod': item["Pescado.cod_pescado"]})));
+            });
+    
+            res.status(200).json(query.map(item => ({ 'nome': item['Pescado.descricao'], 'cod': item["Pescado.cod_pescado"] })));
         }
-
-        if (req.body.inicio){
-            const inicio = req.body.inicio;
-            const fim = req.body.fim;
-
+    
+        if (req.query.inicio && req.query.fim) {
+            const inicio = req.query.inicio;
+            const fim = req.query.fim;
+    
             const query = await CotPescado.findAll({
                 where: {
-                    data: {[Op.between]: [inicio, fim]},
+                    data: { [Op.between]: [inicio, fim] },
                     fonte: fonte
                 },
                 attributes: [],
                 include: [
                     {
-                      model: Pescado,
-                      attributes: ['descricao', 'cod_pescado'],
+                        model: Pescado,
+                        attributes: ['descricao', 'cod_pescado'],
                     }
                 ],
                 raw: true,
                 distinct: true
-            })
-
-            res.status(200).json(query.map(item => ({'nome': item['Pescado.descricao'], 'cod': item["Pescado.cod_pescado"]})))
-
+            });
+    
+            res.status(200).json(query.map(item => ({ 'nome': item['Pescado.descricao'], 'cod': item["Pescado.cod_pescado"] })))
         }
-
     }
     
 
