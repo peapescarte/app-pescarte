@@ -125,7 +125,7 @@
     border-bottom: 2px solid #e7e7e7;
     padding-bottom: 10px;
 }
-.container-page .container-periodo .btns-data-periodo .btn-periodo, .btns-data-periodo .btn-data, button.submit-form, .btn-mobile-filter{
+.container-page .container-periodo .btns-data-periodo .btn-periodo, .btns-data-periodo .btn-data, .submit-form, .btn-mobile-filter{
     background-color: var(--color-primary);
     color: #fff;
     font-family: "WorkSans-regular";
@@ -139,7 +139,7 @@
 .btn-mobile-filter{
     display: none;
 }
-button.submit-form{
+.submit-form{
     height: 44px;
     display: flex;
     gap: 16px;
@@ -332,9 +332,12 @@ button.submit-form{
     border-radius: 4px;
     cursor: pointer;
 }
-
 .fechar-filtro{
     display: none;
+}
+.container-tabela{
+    max-height: calc((53px*10) + 60px);
+    overflow-y: hidden;
 }
 @media only screen and (max-width: 1300px){
     .container-page .container-title-date .title-page {
@@ -360,7 +363,7 @@ button.submit-form{
         margin-top: 28px;
         gap: 20px;
     }
-    .container-page .container-periodo .btns-data-periodo .btn-periodo, .btns-data-periodo .btn-data, button.submit-form{
+    .container-page .container-periodo .btns-data-periodo .btn-periodo, .btns-data-periodo .btn-data, .submit-form{
         font-size: 0.8rem;
         padding: 7px 11px;
     }
@@ -396,7 +399,7 @@ button.submit-form{
     .submit-form svg{
         width: 20px;
     }
-    button.submit-form {
+    .submit-form {
         height: 35.2px;
         margin-top: 25px;
         gap: 8px;
@@ -419,6 +422,10 @@ button.submit-form{
     }
     .container-page .btns-carregar-exportar button svg{
         width: 18px;
+    }
+    .container-tabela{
+        max-height: calc((33px*10) + 40px);
+        overflow-y: hidden;
     }
 }
 
@@ -495,7 +502,7 @@ button.submit-form{
         width: 97%;
         z-index: 99;
       }
-      button.submit-form{
+      .submit-form{
         width: max-content;
         margin-top: unset;
       }
@@ -518,6 +525,11 @@ button.submit-form{
       }
       .container-btns-forms .fechar-filtro svg{
         width: 18px;
+      }
+      .container-tabela{
+          max-height: calc((37px*10) + 45px);
+          overflow-y: hidden;
+          overflow-x: scroll;
       }
     }
 @media only screen and (max-width: 768px){
