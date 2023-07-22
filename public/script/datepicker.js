@@ -122,6 +122,7 @@ $(function(){
         if(MultiDate.endDate) {
           MultiDate.$endDate.val("Até: " + MultiDate.endDate.format("DD/MM/YYYY"));
           $(".container-periodo").removeClass("active");
+          getPescados()  
         }
       },
       
@@ -181,7 +182,6 @@ $(function(){
         dateFormat: 'dd/mm/yy',
         dayNamesMin: ['dom','seg','ter','qua','qui','sex','sáb'],
         monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-   
         };
         // Setting elements
         MultiDate.$startDate = $(MultiDate.startDateField);
@@ -207,10 +207,11 @@ $(function(){
             dataPascoa($("#year-select")[0].value);
             break;
         case "Natal":
-           insertDateInput(`25/12/${$("#year-select")[0].value}`);
+          // insertDateInput(`25/12/${$("#year-select")[0].value}`);
+          insertDateInput(`25/07/2012`);
             break;
         case "Réveillon":
-           insertDateInput(`31/12/${$("#year-select")[0].value}`);
+          insertDateInput(`31/12/${$("#year-select")[0].value}`);
             break;
         case "Semana Santa":
             dataSextaFeiraSanta($("#year-select")[0].value);
@@ -221,12 +222,12 @@ $(function(){
         }
         $(".container-periodo").toggleClass("active");
         $(".fade").toggleClass("active");
+        getPescados();
     });
   });
 
 function dataSextaFeiraSanta(ano) {
     const dataPascoa = calcularDataPascoa(ano);
-  
     const dataSextaFeiraSanta = new Date(dataPascoa);
     dataSextaFeiraSanta.setDate(dataPascoa.getDate() - 2); // Sexta-feira Santa é dois dias antes da Páscoa
     
@@ -255,10 +256,9 @@ function dataPascoa(ano) {
     const p = (h + l - 7 * m + 114) % 31;
     const dia = p + 1;
     const mes = n;
-  
     return new Date(ano, mes - 1, dia); // O mês em JavaScript começa a partir de 0 (janeiro é 0)
   }
-  
+
 function insertDateInput(data){
     $("#start_date").val(data)
 }
