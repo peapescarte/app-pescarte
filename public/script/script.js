@@ -81,3 +81,28 @@ activeFilter.on( "click", function() {
     body.toggleClass("hidden");
     $(window).scrollTop(0);
 });
+
+$(".btn-carregar").on( "click", function() {
+    const container = document.querySelector(".container-tabela");
+    // $(".resultados-gerados tbody").length()
+    // container.setAttribute("data-size", "10");
+    // console.log(container.getAttribute("data-size"))
+    
+    
+    if(container.getAttribute("data-size") < $(".resultados-gerados tbody tr").length){
+        var newValue = parseInt(container.getAttribute("data-size")) + 10;
+        container.setAttribute("data-size", newValue);
+    }
+    
+    container.style.overflowY = `hidden`;
+
+    if(window.innerWidth < 1024){
+         container.style.overflowX = `scroll`;
+        container.style.maxHeight = `calc((37px * ${container.getAttribute("data-size")}) + 45px)`;
+    }else if(window.innerWidth < 1301){
+        container.style.maxHeight = `calc((33px * ${container.getAttribute("data-size")}) + 40px)`;
+    }else{
+        container.style.maxHeight = `calc((53px * ${container.getAttribute("data-size")}) + 60px)`;
+    }
+    
+});
