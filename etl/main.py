@@ -1,4 +1,4 @@
-import crawler
+import etl.crawlers.pesagro as pesagro
 
 from datetime import datetime
 
@@ -9,4 +9,4 @@ if __name__ == "__main__":
     # Chama todos os crawlers
 
     # Pesagro
-    crawler.pesagro_crawler()
+    pesagro.pesagro_crawler()
