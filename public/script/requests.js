@@ -1,6 +1,6 @@
 // ------------------------ SCRIPT PARA AS REQUISIÇÕES -----------------------------
 
-const urlAPI = 'http://140.238.190.50:8000';
+const urlAPI = 'http://168.75.100.133:8000';
 
 function initRequests() {
     fetch(`${urlAPI}/auth`, {
