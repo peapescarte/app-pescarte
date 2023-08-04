@@ -66,9 +66,9 @@ function insertFonte(fontes) {
 function getPescados() {
   var dataUrl = convertDate();
   var fonte = $("#fontes")[0].value;
-  var urlRequest = `${urlAPI}/cotPescados/pescados?fonte=${fonte}&${dataUrl}`;
+  var urlRequest = fonte != "" ? `${urlAPI}/cotPescados/pescados?fonte=${fonte}&${dataUrl}` 
+                    : `${urlAPI}/cotPescados/pescados?${dataUrl}` ;
   //data=2012-07-26
-  
   
   fetch(`${urlAPI}/auth`, {
         method: 'GET',
@@ -88,7 +88,14 @@ function getPescados() {
         .then(response => response.json())
         .then(pescados => {
           // Manipule a resposta da requisição aqui
-          insertPescados(pescados)
+          if(pescados.length == 0){
+            alert("Nenhum pescado encontrado, selecione outra data!");
+            $(".active-tab-pescados").css("pointer-events", "none")
+          }else{
+            $(".active-tab-pescados").css("pointer-events", "auto")
+            insertPescados(pescados)
+          }
+          
         })
         .catch(error => {
           // Lida com erros da requisição
@@ -104,6 +111,12 @@ function getPescados() {
 function insertPescados(arrayPesc) {
   const containerPesc = $(".container-pescados");
   containerPesc.empty();
+  containerPesc.append(`
+        <div class="input-container-checkbox" onclick="disableDropDown()">
+            <label for="Todos">Todos</label>
+            <input type="checkbox" name="" id="Todos" data-value="">
+        </div>
+      `)
   arrayPesc.map(function(dados) {
       containerPesc.append(`
         <div class="input-container-checkbox">

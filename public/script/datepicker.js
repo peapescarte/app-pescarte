@@ -207,11 +207,24 @@ $(function(){
             dataPascoa($("#year-select")[0].value);
             break;
         case "Natal":
-          // insertDateInput(`25/12/${$("#year-select")[0].value}`);
-          insertDateInput(`25/07/2012`);
+            const dataAtual = new Date();
+            const anoAtual = dataAtual.getFullYear();
+                
+            if($("#year-select")[0].value == anoAtual){
+                insertDateInput(`25/12/${$("#year-select")[0].value - 1}`);
+            }else{
+                insertDateInput(`25/12/${$("#year-select")[0].value}`);
+            }
             break;
         case "Réveillon":
-          insertDateInput(`31/12/${$("#year-select")[0].value}`);
+            const data2Atual = new Date();
+            const ano2Atual = data2Atual.getFullYear();
+                
+            if($("#year-select")[0].value == ano2Atual){
+                insertDateInput(`31/12/${$("#year-select")[0].value - 1}`);
+            }else{
+                insertDateInput(`31/12/${$("#year-select")[0].value}`);
+            }
             break;
         case "Semana Santa":
             dataSextaFeiraSanta($("#year-select")[0].value);
