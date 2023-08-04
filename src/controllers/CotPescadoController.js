@@ -119,9 +119,9 @@ class CotPescadoController{
                 mais_comum: []
               };
             }
-            acc[nome].minimo.push(cot.minimo);
-            acc[nome].maximo.push(cot.maximo);
-            acc[nome].mais_comum.push(cot.mais_comum);
+            acc[nome].minimo.push(parseInt(cot.minimo));
+            acc[nome].maximo.push(parseInt(cot.maximo));
+            acc[nome].mais_comum.push(parseInt(cot.mais_comum));
             return acc;
           }, {});
           
