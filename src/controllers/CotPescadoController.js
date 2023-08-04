@@ -134,16 +134,25 @@ class CotPescadoController{
     }
 
     async pescados(req, res) {
-        const fonte = req.query.fonte;
+
+        let where = {}
+
+        where[Op.and] = [];
+
+        if(req.query.fonte){
+            where[Op.and].push({
+                fonte: req.query.fonte
+            });
+        }
     
         if (req.query.data) {
-            const data = req.query.data;
+
+            where[Op.and].push({
+                fonte: req.query.data
+            });
     
             const query = await CotPescado.findAll({
-                where: {
-                    data: data,
-                    fonte: fonte
-                },
+                where: where,
                 attributes: [],
                 include: [
                     {
@@ -159,14 +168,15 @@ class CotPescadoController{
         }
     
         if (req.query.inicio && req.query.fim) {
-            const inicio = req.query.inicio;
-            const fim = req.query.fim;
+            
+            where[Op.and].push({
+                data: {
+                    [Op.between]: [req.query.inicio, req.query.fim]
+                }
+            });
     
             const query = await CotPescado.findAll({
-                where: {
-                    data: { [Op.between]: [inicio, fim] },
-                    fonte: fonte
-                },
+                where: where,
                 attributes: [],
                 include: [
                     {
