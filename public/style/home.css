@@ -339,6 +339,25 @@
     max-height: calc((53px*10) + 60px);
     overflow-y: hidden;
 }
+.active-tab-pescados, .active-tab-periodo{
+    height: 20.8px;
+}
+.container-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--color-secondary)
+}
+.container-error h3{
+    font-family: 'WorkSans-bold';
+    font-size: 8rem;
+    font-style: normal;
+}
+.container-error p{
+    font-size: 1.5rem;
+}
 @media only screen and (max-width: 1300px){
     .container-page .container-title-date .title-page {
         font-size: 1.6rem;
@@ -390,6 +409,7 @@
     }
     .active-tab-periodo {
         width: 233px;
+        height: 16.8px;
     }
     .container-pescados {
         width: 155px;
@@ -426,6 +446,9 @@
     .container-tabela{
         max-height: calc((33px*10) + 40px);
         overflow-y: hidden;
+    }
+    .active-tab-pescados{
+        height: 16.8px;
     }
 }
 
