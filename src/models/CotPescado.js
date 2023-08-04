@@ -27,7 +27,8 @@ export default class CotPescado extends Model {
             },
             minimo: Sequelize.NUMBER,
             maximo: Sequelize.NUMBER,
-            mais_comum: Sequelize.NUMBER
+            mais_comum: Sequelize.NUMBER,
+            media: Sequelize.NUMBER
             
         }, 
         {
