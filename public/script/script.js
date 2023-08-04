@@ -83,11 +83,7 @@ activeFilter.on( "click", function() {
 });
 
 $(".btn-carregar").on( "click", function() {
-    const container = document.querySelector(".container-tabela");
-    // $(".resultados-gerados tbody").length()
-    // container.setAttribute("data-size", "10");
-    // console.log(container.getAttribute("data-size"))
-    
+    const container = document.querySelector(".container-tabela");    
     
     if(container.getAttribute("data-size") < $(".resultados-gerados tbody tr").length){
         var newValue = parseInt(container.getAttribute("data-size")) + 10;
@@ -98,11 +94,56 @@ $(".btn-carregar").on( "click", function() {
 
     if(window.innerWidth < 1024){
          container.style.overflowX = `scroll`;
-        container.style.maxHeight = `calc((37px * ${container.getAttribute("data-size")}) + 45px)`;
+        container.style.maxHeight = `calc((37px * ${container.getAttribute("data-size")}) + 38px)`;
     }else if(window.innerWidth < 1301){
-        container.style.maxHeight = `calc((33px * ${container.getAttribute("data-size")}) + 40px)`;
+        container.style.maxHeight = `calc((33px * ${container.getAttribute("data-size")}) + 34px)`;
     }else{
-        container.style.maxHeight = `calc((53px * ${container.getAttribute("data-size")}) + 60px)`;
+        container.style.maxHeight = `calc((53px * ${container.getAttribute("data-size")}) + 57px)`;
     }
     
+});
+
+function disableDropDown(){
+    $(".fade").removeClass("active");
+    if($(".container-pescados").hasClass("active")){
+        $(".container-pescados").removeClass("active");
+    }
+}
+
+function exportarCSV() {
+      const tabela = document.querySelector('.resultados-gerados');
+      const linhas = tabela.getElementsByTagName('tr');
+      const colunasCabecalho = tabela.getElementsByTagName('th');
+      
+      let csvContent = '';
+      
+      // Extrair os dados do cabeçalho
+      const cabecalhoCSV = Array.from(colunasCabecalho)
+        .map(coluna => coluna.innerText)
+        .join(',');
+      csvContent += cabecalhoCSV + '\n';
+
+      // Extrair os dados das linhas
+      for (const linha of linhas) {
+        const colunas = linha.getElementsByTagName('td');
+        const linhaCSV = Array.from(colunas)
+          .map(coluna => coluna.innerText)
+          .join(',');
+        csvContent += linhaCSV + '\n';
+      }
+
+      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'DadosCotacoes.csv';
+      a.click();
+
+      // Limpar a URL para liberar recursos
+      URL.revokeObjectURL(url);
+    }
+
+$(".btn-exportar").on( "click", function() {
+    exportarCSV()
 });
