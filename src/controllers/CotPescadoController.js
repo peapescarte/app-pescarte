@@ -124,8 +124,14 @@ class CotPescadoController{
             acc[nome].mais_comum.push(parseFloat(cot.mais_comum));
             return acc;
           }, {});
+
+          Object.values(agrupado).forEach((pescado) => {
+            const calcularMedia = (array) => array.reduce((acc, val) => acc + val, 0) / array.length;
+            pescado.minimo = calcularMedia(pescado.minimo);
+            pescado.maximo = calcularMedia(pescado.maximo);
+            pescado.mais_comum = calcularMedia(pescado.mais_comum);
+          });
           
-          // Converte o objeto de grupos para um array de objetos
           const resultado = Object.values(agrupado);
 
 
