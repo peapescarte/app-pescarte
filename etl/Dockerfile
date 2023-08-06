@@ -8,8 +8,8 @@ WORKDIR /
 COPY etl_scheduler.txt /etc/cron.d/etl_scheduler.txt
 
 COPY . .
-#RUN chmod 0644 /etc/cron.d/etl_scheduler.txt
-#RUN /usr/bin/crontab /etc/cron.d/etl_scheduler.txt
+RUN chmod 0644 /etc/cron.d/etl_scheduler.txt
+RUN /usr/bin/crontab /etc/cron.d/etl_scheduler.txt
+RUN pip3 install -r requirements.txt
 
-#CMD ["cron", "-f"]
-#CMD ["python3", "app/src/main.py"]
+CMD ["cron", "-f"]

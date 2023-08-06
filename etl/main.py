@@ -1,4 +1,4 @@
-import etl.crawlers.pesagro as pesagro
+import crawlers.pesagro as pesagro
 
 from datetime import datetime
 

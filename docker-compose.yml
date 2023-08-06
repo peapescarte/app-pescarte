@@ -13,10 +13,24 @@ services:
         - databaseNetwork
 
   app:
-    build: .
+    build: 
+      context: .
+      network: host
     ports:
       - "8000:8000"
     restart: on-failure
+    networks:
+      - databaseNetwork
+
+  etl:
+    build: 
+      context: etl/
+      network: host
+    restart: on-failure
+    env_file:
+      - .env
+    depends_on:
+      - database
     networks:
       - databaseNetwork
 
