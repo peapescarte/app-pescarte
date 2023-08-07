@@ -6,8 +6,8 @@
 3. [Crawlers](#crawlers)
 4. [Scrappers](#scrappers)
 5. [Módulos Adicionais](#módulos-adicionais)
-5.1. [file_utils.py](#file_utilspy)
-5.2. [db_utils.py](#db_utilspy)
+    5.1. [file_utils.py](#file_utilspy)
+    5.2. [db_utils.py](#db_utilspy)
 6. [Arquitetura Geral do ETL](#arquitetura-geral-de-etl)
 7. [Execução](#execução)
 8. [Como Adicionar Novos Crawlers e Scrappers](#como-adicionar-novos-crawlers-e-scrappers)
@@ -64,8 +64,19 @@ O que pude notar foi a constante mudança no layout da página web, mas não na 
 
 Desta maneira, sempre que houver uma nova fonte de dados para ser adicionada no elt, primeiramente deve-se implementar o crawler utilizando a lógica apresentada na sessão [Crawlers](#crawlers).
 Deve-se considerar como encontrar os dados na fonte, em que formato se encontram (tabela HTML, PDF, planilha, arquivos semiestruturados, entre outros), se estão compactados ou não, obter informações capazes de garantir que aquele dado foi ou não extraído anteriormente utilizando o banco de dados e chamar o scrapper no caso de haver dados novos para serem extraídos e salvá-los no banco de dados.
+O diretório contendo os crawlers devem ser organizados por fonte de dados.
+* crawler_fonte_1.py
+* crawler_fonte_2.py
+* ...
+* crawler_fonte_n.py
 
 Uma vez implementado crawler, a próxima etapa é implementar o script para obtenção (raspagem) dos dados seguindo a lógica apresentada na sessão [Scrappers](#scrappers).
+
+O diretório contendo novos scrappers devem ser organizados por fonte de dados.
+* scrapper_fonte_1.py
+* scrapper_fonte_2.py
+* ...
+* scrapper_fonte_n.py
 
 # Scheduler
 Atualmente, todos os processos de extração automática de dados estão configurados para rodar automaticamente utilizando o crontab do linux.
