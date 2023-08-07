@@ -127,9 +127,9 @@ class CotPescadoController{
 
           Object.values(agrupado).forEach((pescado) => {
             const calcularMedia = (array) => array.reduce((acc, val) => acc + val, 0) / array.length;
-            pescado.minimo = calcularMedia(pescado.minimo);
-            pescado.maximo = calcularMedia(pescado.maximo);
-            pescado.mais_comum = calcularMedia(pescado.mais_comum);
+            pescado.minimo = calcularMedia(pescado.minimo).toFixed(2);
+            pescado.maximo = calcularMedia(pescado.maximo).toFixed(2);
+            pescado.mais_comum = calcularMedia(pescado.mais_comum).toFixed(2);
           });
           
           const resultado = Object.values(agrupado);
