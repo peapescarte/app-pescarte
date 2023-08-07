@@ -226,7 +226,7 @@ $(function(){
                 insertDateInput(`31/12/${$("#year-select")[0].value}`);
             }
             break;
-        case "Semana Santa":
+        case "Sexta-Feira Santa":
             dataSextaFeiraSanta($("#year-select")[0].value);
             break;
         default:
