@@ -147,3 +147,57 @@ function exportarCSV() {
 $(".btn-exportar").on( "click", function() {
     exportarCSV()
 });
+
+
+// Gráfico
+
+const data = [
+    { date: "Jan", maxPrice: 15, minPrice: 10, avgPrice: 12 },
+    { date: "Feb", maxPrice: 18, minPrice: 12, avgPrice: 15 },
+    { date: "Mar", maxPrice: 20, minPrice: 15, avgPrice: 18 },
+    // ... continue with data for the other months
+  ];
+  
+  const chart = document.getElementById("chart");
+  
+  const labels = data.map(entry => entry.date);
+  const maxPrices = data.map(entry => entry.maxPrice);
+  const minPrices = data.map(entry => entry.minPrice);
+  const avgPrices = data.map(entry => entry.avgPrice);
+  
+  const ctx = document.createElement("canvas");
+  chart.appendChild(ctx);
+  
+  const chartConfig = {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Preço Máximo",
+          data: maxPrices,
+          borderColor: "#FF5733",
+          fill: false,
+        },
+        {
+          label: "Preço Mínimo",
+          data: minPrices,
+          borderColor: "#33AFFF",
+          fill: false,
+        },
+        {
+          label: "Preço Médio",
+          data: avgPrices,
+          borderColor: "#33FF33",
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+    },
+  };
+  
+  new Chart(ctx, chartConfig);
+  
+  

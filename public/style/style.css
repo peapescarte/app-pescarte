@@ -31,3 +31,34 @@ body.hidden{
     --color-secondary: #FF6E00;
 }
 
+
+/* Estilos específicos para o gráfico */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  #chart {
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  .footer {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+.samara {
+    width: 80%;
+}
+  
+.chart-father {
+    display: flex;
+    justify-content: center;
+}
