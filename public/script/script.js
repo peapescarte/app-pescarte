@@ -137,7 +137,9 @@ function exportarCSV() {
 
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'DadosCotacoes.csv';
+
+      a.download = `DadosCotacoes-${$("#fontes")[0].value}.csv`;
+
       a.click();
 
       // Limpar a URL para liberar recursos
