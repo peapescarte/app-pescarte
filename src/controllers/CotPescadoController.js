@@ -127,9 +127,11 @@ class CotPescadoController{
 
           Object.values(agrupado).forEach((pescado) => {
             const calcularMedia = (array) => array.reduce((acc, val) => acc + val, 0) / array.length;
+
             pescado.minimo = calcularMedia(pescado.minimo).toFixed(2);
             pescado.maximo = calcularMedia(pescado.maximo).toFixed(2);
             pescado.mais_comum = calcularMedia(pescado.mais_comum).toFixed(2);
+
           });
           
           const resultado = Object.values(agrupado);
@@ -197,10 +199,66 @@ class CotPescadoController{
             res.status(200).json(query.map(item => ({ 'nome': item['Pescado.descricao'], 'cod': item["Pescado.cod_pescado"] })))
         }
     }
-    
 
+    async medias(req, res){
+        const { codPescado, dataInicio, dataFim } = req.query;
+
+        try {
+            const queryResult = await CotPescado.findAll({
+            where: {
+                cod_pescado: codPescado,
+                data: {
+                [Op.between]: [dataInicio, dataFim],
+                },
+            },
+            attributes: ['data', 'minimo', 'mais_comum', 'maximo'],
+            });
+
+            const monthlyAverages = {};
+            queryResult.forEach(row => {
+                const rowData = row.dataValues;
+                const rowDate = new Date(rowData.data);
+                const month = getMonthName(rowDate.getMonth()); // Obter o nome do mês
+
+                if (!monthlyAverages[month]) {
+                    monthlyAverages[month] = {
+                    media_minimo: 0,
+                    media_mais_comum: 0,
+                    media_maximo: 0,
+                    count: 0,
+                    };
+                }
+                const currentMonth = monthlyAverages[month];
+                currentMonth.media_minimo += parseFloat(rowData.minimo); // Converta para número
+                currentMonth.media_mais_comum += parseFloat(rowData.mais_comum); // Converta para número
+                currentMonth.media_maximo += parseFloat(rowData.maximo); // Converta para número
+                currentMonth.count++;
+            });
+
+            Object.keys(monthlyAverages).forEach(month => {
+                const monthData = monthlyAverages[month];
+                monthData.media_minimo /= monthData.count;
+                monthData.media_mais_comum /= monthData.count;
+                monthData.media_maximo /= monthData.count;
+                delete monthData.count;
+            });
+
+            res.status(200).json(monthlyAverages);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro ao processar a solicitação.' });
+        }
+    }
+    
 }
 
+function getMonthName(monthIndex) {
+    const monthNames = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+    return monthNames[monthIndex];
+  }
 
 
 export default new CotPescadoController(); 

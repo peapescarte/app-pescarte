@@ -56,6 +56,7 @@ function formatDate (input) {
 
 function insertFonte(fontes) {
   const listFonts = $("#fontes")
+
   var fonteUpper = ''
 
   fontes.map(function(fonte) {
