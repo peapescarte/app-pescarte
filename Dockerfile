@@ -6,6 +6,6 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["node", "-r", "sucrase/register", "server.js"]

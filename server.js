@@ -2,7 +2,7 @@ import app from './app';
 import fs from 'fs';
 import https from 'https';
 
-const port = 8000;
+const port = 80;
 
 const options = {
     key: fs.readFileSync('server.key'),
