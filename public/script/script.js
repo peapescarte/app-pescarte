@@ -108,6 +108,53 @@ function disableDropDown(){
     if($(".container-pescados").hasClass("active")){
         $(".container-pescados").removeClass("active");
     }
+    var textAtual = $(".active-tab-pescados span").text();
+
+    const pescados = $(".input-container-checkbox input").toArray();
+      
+      
+    if(textAtual.includes(`Todos, `)){
+        var newText = textAtual.replace(`Todos, `, "")
+        $(".active-tab-pescados span").text(`${newText}`)
+        
+    }else if(textAtual.includes(`Todos`)){
+        var newText = textAtual.replace(`Todos`, "Selecione os pescados: ")
+        $(".active-tab-pescados span").text(`${newText}`)
+        
+    }else{
+        $(".active-tab-pescados span").text("Todos")
+        pescados.map(function(pescado) {
+          if(pescado.checked){              
+              $(`.input-container-checkbox #${pescado.name}`).prop('checked', false);
+          }      
+        });
+    }
+   
+}
+function insertPescadoInputName(pescadoName){
+    
+    var textAtual = $(".active-tab-pescados span").text();
+
+    if(textAtual.includes(`${pescadoName},`)){
+        var newText = textAtual.replace(`${pescadoName}, `, "")
+        $(".active-tab-pescados span").text(`${newText}`)
+        
+    }else if(textAtual.includes(`, ${pescadoName}`)){
+        var newText = textAtual.replace(`, ${pescadoName}`, '')
+        $(".active-tab-pescados span").text(`${newText}`)
+        
+    }else if(textAtual.includes(pescadoName)){
+        var newText = textAtual.replace(`${pescadoName}`, '')
+        $(".active-tab-pescados span").text(`${newText}`)
+        
+    }else if(textAtual == "Selecione os pescados: "){
+        $(".active-tab-pescados span").text(`${pescadoName}`)
+    }else if(textAtual == ""){
+        $(".active-tab-pescados span").text(`${pescadoName}`)
+    }else{
+        $(".active-tab-pescados span").text(`${textAtual}, ${pescadoName}`)
+    }
+    
 }
 
 function exportarCSV() {

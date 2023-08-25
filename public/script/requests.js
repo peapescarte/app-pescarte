@@ -115,15 +115,15 @@ function insertPescados(arrayPesc) {
   const containerPesc = $(".container-pescados");
   containerPesc.empty();
   containerPesc.append(`
-        <div class="input-container-checkbox" onclick="disableDropDown()">
-            <label for="Todos">Todos</label>
+        <div class="input-container-checkbox">
+            <label for="Todos" onclick="disableDropDown()">Todos</label>
             <input type="checkbox" name="" id="Todos" data-value="">
         </div>
       `)
   arrayPesc.map(function(dados) {
       containerPesc.append(`
         <div class="input-container-checkbox">
-            <label for="${dados.cod}">${dados.nome}</label>
+            <label for="${dados.cod}" onclick="insertPescadoInputName('${dados.nome}')">${dados.nome}</label>
             <input type="checkbox" name="${dados.cod}" id="${dados.cod}" data-value="${dados.cod}">
         </div>
       `)
