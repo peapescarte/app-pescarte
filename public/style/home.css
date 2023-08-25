@@ -265,9 +265,20 @@
     padding: 4px 10px;
     border-radius: 4px;
     transition: .5s ease;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
 }
 .input-container-checkbox label{
     width: 100%;
+    padding-right: 15px;
+    z-index: 2;
+    cursor: pointer;
+}
+.input-container-checkbox input{
+    position: absolute;
+    right: 10px;
+    z-index: 1;
 }
 .container-pescados::-webkit-scrollbar {
     width: 5px;   
@@ -341,6 +352,12 @@
 }
 .active-tab-pescados, .active-tab-periodo{
     height: 20.8px;
+}
+.active-tab-pescados{
+    min-width: 182px;
+    max-width: 182px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .container-error {
@@ -457,6 +474,11 @@
     .active-tab-pescados{
         height: 16.8px;
     }
+    .active-tab-pescados{
+        min-width: 146px;
+        max-width: 146px;
+        overflow: hidden;
+    }
     .container-error{
         gap: 1rem;
     }
@@ -529,6 +551,7 @@
       }
       .active-tab-pescados, .active-tab-periodo{
         width: 94.4%;
+        max-width: unset;
       }
       .container-page .container-periodo{
         z-index: 99;
