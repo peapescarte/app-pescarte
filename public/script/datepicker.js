@@ -229,6 +229,17 @@ $(function(){
         case "Sexta-Feira Santa":
             dataSextaFeiraSanta($("#year-select")[0].value);
             break;
+        case "Alta Temporada":
+            const data3Atual = new Date();
+            const ano3Atual = data3Atual.getFullYear();
+                
+            if($("#year-select")[0].value == ano3Atual){
+                insertStartDateInput(`15/12/${$("#year-select")[0].value - 1}`);
+                insertEndDateInput(`15/02/${$("#year-select")[0].value}`);
+            }else{
+                insertStartDateInput(`15/12/${$("#year-select")[0].value - 1}`);
+                insertEndDateInput(`15/02/${$("#year-select")[0].value}`);
+            }        
         default:
             console.log("Dia inválido");
             break;
@@ -274,4 +285,10 @@ function dataPascoa(ano) {
 
 function insertDateInput(data){
     $("#start_date").val(data)
+}
+function insertStartDateInput(data){
+  $("#start_date").val("De: " + data)
+}
+function insertEndDateInput(data){
+  $("#end_date").val("Até: " + data)
 }
