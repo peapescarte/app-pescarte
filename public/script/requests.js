@@ -1,6 +1,6 @@
 // ------------------------ SCRIPT PARA AS REQUISIÇÕES -----------------------------
 
-const urlAPI = 'http://150.230.94.222:80';
+const urlAPI = 'https://cotacoes.pescarte.uenf.br';
 
 function initRequests() {
     fetch(`${urlAPI}/auth`, {
