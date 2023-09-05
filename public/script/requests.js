@@ -119,15 +119,15 @@ function insertPescados(arrayPesc) {
   const containerPesc = $(".container-pescados");
   containerPesc.empty();
   containerPesc.append(`
-        <div class="input-container-checkbox" onclick="disableDropDown()">
-            <label for="Todos">Todos</label>
+        <div class="input-container-checkbox">
+            <label for="Todos" onclick="disableDropDown()">Todos</label>
             <input type="checkbox" name="" id="Todos" data-value="">
         </div>
       `)
   arrayPesc.map(function(dados) {
       containerPesc.append(`
         <div class="input-container-checkbox">
-            <label for="${dados.cod}">${dados.nome}</label>
+            <label for="${dados.cod}" onclick="insertPescadoInputName('${dados.nome}')">${dados.nome}</label>
             <input type="checkbox" name="${dados.cod}" id="${dados.cod}" data-value="${dados.cod}">
         </div>
       `)
@@ -257,27 +257,26 @@ function insertResult(params) {
         </tr>
     `)
     params.map(function(dado) {
-        const cod = findCodForNome(dado.nome);
-        container.append(`
-            <tr>
-               <td>
-                  ${dado.nome} 
-                  <i class="fas fa-chart-line" data-id="${cod}" style="cursor: pointer;"></i> 
-                  <i class="fas fa-times close-chart" data-id="${cod}" style="cursor: pointer; display: none;"></i>
-                  <span class="displayed-name"></span>
-                  <div id="chart-${cod}" style="display: none;"></div>
-              </td>
-              <td><span>R$ ${dado.minimo}</span> /kg</td>
-              <td><span>R$ ${dado.mais_comum}</span> /kg</td>
-              <td><span>R$ ${dado.maximo}</span> /kg</td>
-            </tr>
-      `)
-    });
+    const cod = findCodForNome(dado.nome);
+    container.append(`
+        <tr>
+          <td>
+              ${dado.nome} 
+              <i class="fas fa-chart-line" data-id="${cod}" style="cursor: pointer;"></i> 
+              <i class="fas fa-times close-chart" data-id="${cod}" style="cursor: pointer; display: none;"></i>
+              <span class="displayed-name"></span>
+              <div id="chart-${cod}" style="display: none;"></div>
+          </td>
+          <td><span>R$ ${dado.minimo}</span> /kg</td>
+          <td><span>R$ ${dado.mais_comum}</span> /kg</td>
+          <td><span>R$ ${dado.maximo}</span> /kg</td>
+        </tr>
+    `)
+  });
 
-
-    $("#filter-form").removeClass("active");
-    $(".fade").removeClass("active");
-    $("body").removeClass("hidden");
+  $("#filter-form").removeClass("active");
+  $(".fade").removeClass("active");
+  $("body").removeClass("hidden");
 }
 
 $(".container-btns-forms").on( "click", function() {
