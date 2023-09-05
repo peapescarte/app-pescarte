@@ -31,3 +31,6 @@ body.hidden{
     --color-secondary: #FF6E00;
 }
 
+.anychart-credits {
+    display: none !important;
+}
