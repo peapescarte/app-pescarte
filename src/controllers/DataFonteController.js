@@ -12,7 +12,9 @@ class FonteController{
             limit: 1
         })
 
-        const fontes = await Fonte.findAll();
+        const fontes = await Fonte.findAll({
+            order: [['nome', 'DESC']]
+        });
 
         const nomeFontes = fontes.map(fonte => fonte.nome)
 
