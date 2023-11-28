@@ -96,6 +96,18 @@ class CotPescadoController{
             }
         }
 
+        where[Op.and].push({
+            minimo: {
+                [Op.gt]: 0
+              },
+              maximo: {
+                [Op.gt]: 0
+              },
+              mais_comum: {
+                [Op.gt]: 0
+              }
+        })
+
 
         const cotPesc = await CotPescado.findAll({
             where: where,
@@ -210,6 +222,15 @@ class CotPescadoController{
                 data: {
                 [Op.between]: [dataInicio, dataFim],
                 },
+                minimo: {
+                    [Op.gt]: 0
+                  },
+                  maximo: {
+                    [Op.gt]: 0
+                  },
+                  mais_comum: {
+                    [Op.gt]: 0
+                  }
             },
             attributes: ['data', 'minimo', 'mais_comum', 'maximo'],
             });
