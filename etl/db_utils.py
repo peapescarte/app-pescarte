@@ -1,5 +1,6 @@
 import os
 import psycopg2
+from datetime import datetime
 
 def get_conn():
     db_name = os.environ['POSTGRES_DB']
@@ -62,3 +63,59 @@ def read_from_table(schema, table, fields, where_clause=''):
             
     except:
         return None
+    
+def adicionar_pescados(nomes_novos, nomes_existentes, codigos_existentes):
+    codigos = []
+
+    print('nomes exist')
+    print(nomes_existentes)
+
+    for nome_pescado in nomes_novos:
+        nome_pescado = nome_pescado.replace('-', ' ')
+
+        # Verifica se o nome já existe na lista de nomes de pescado
+        if nome_pescado in nomes_existentes:
+            continue
+
+        # Verifica se o nome é composto por apenas uma palavra
+        if len(nome_pescado.split()) == 1:
+            codigo = nome_pescado[:3]
+            while codigo in codigos_existentes:
+                codigo = codigo[:-1] + chr(ord(codigo[-1]) + 1)
+            codigos_existentes.append(codigo)
+            codigos.append(codigo)
+        else:
+            codigo = nome_pescado[0] + nome_pescado.split()[1][:2]
+            while codigo in codigos_existentes:
+                codigo = codigo[:-1] + chr(ord(codigo[-1]) + 1)
+            codigos_existentes.append(codigo)
+            codigos.append(codigo)
+
+        print(f"Código escolhido para {nome_pescado}: {codigo}")
+
+        load_data('public', 'pescados', ['cod_pescado', 'descricao', 'embalagem'], [[codigo, nome_pescado, 'KG']])
+
+    return codigos
+    
+def ler_codigo(nome):
+
+    nome = nome.replace('-', ' ')
+
+    print('NOMEEEEE: '+ nome)
+
+    print('LEITURA DA TABELA:')
+    print(read_from_table('public', 'pescados', 'cod_pescado', 'WHERE descricao = \'' + nome + '\''))
+
+    cod_list = [item[0] for item in read_from_table('public', 'pescados', 'cod_pescado', 'WHERE descricao = \'' + nome + '\'')]
+
+    print("Cod list:")
+    print(cod_list)
+
+    return cod_list[0]
+
+def format_number(number):
+    return number.replace(',', '.')
+
+def format_date(date):
+    date_obj = datetime.strptime(date, '%d-%m-%Y')
+    return date_obj.strftime('%Y-%m-%d')
