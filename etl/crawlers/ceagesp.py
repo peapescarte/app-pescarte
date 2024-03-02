@@ -182,3 +182,5 @@ def run():
                 os.remove(caminho_completo)
     except Exception as e:
         print(f'Ocorreu um erro ao apagar: {str(e)}')
+
+    driver.quit()
