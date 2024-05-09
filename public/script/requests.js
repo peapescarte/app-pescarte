@@ -1,6 +1,6 @@
 // ------------------------ SCRIPT PARA AS REQUISIÇÕES -----------------------------
 
-const urlAPI = 'https://cotacoes.pescarte.uenf.br';
+const urlAPI = 'https://cota-pesca.pescarte.org.br';
 
 let globalPescadosData = [];
 let chartRendered = false;
