@@ -1,6 +1,6 @@
 // ------------------------ SCRIPT PARA AS REQUISIÇÕES -----------------------------
 
-const urlAPI = 'https://cotacao-api.fly.dev';
+const urlAPI = 'https://cota-pesca.pescarte.org.br';
 
 let globalPescadosData = [];
 let chartRendered = false;
