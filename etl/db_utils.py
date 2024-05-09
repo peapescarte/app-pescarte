@@ -3,10 +3,10 @@ import psycopg2
 from datetime import datetime
 
 def get_conn():
-    db_name = os.environ['POSTGRES_DB']
-    db_port = os.environ['DATABASE_PORT']
-    user = os.environ['POSTGRES_USER']
-    password = os.environ['POSTGRES_PASSWORD']
+    db_name = 'postgres'
+    db_port = '5432'
+    user = os.environ['DATABASE_USER']
+    password = os.environ['DATABASE_PASSWORD']
     host = os.environ['DATABASE_HOST']
 
     conn = psycopg2.connect(

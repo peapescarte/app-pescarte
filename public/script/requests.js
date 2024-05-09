@@ -1,6 +1,6 @@
 // ------------------------ SCRIPT PARA AS REQUISIÇÕES -----------------------------
 
-const urlAPI = 'https://cotacoes.pescarte.uenf.br';
+const urlAPI = 'https://cotacao-api.fly.dev';
 
 let globalPescadosData = [];
 let chartRendered = false;
